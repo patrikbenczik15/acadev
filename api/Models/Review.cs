@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using System.ComponentModel.DataAnnotations;
 namespace api.models
 {
@@ -15,7 +12,7 @@ namespace api.models
         [Required]
         public string Content { get; set; } = string.Empty;
 
-        [Range(1, 5)]  // Rating între 1 și 5
+        [Range(1, 5)]
         public int Rating { get; set; }
 
         [Required]
