@@ -1,4 +1,4 @@
-namespace api.dao
+namespace api.dto
 {
     public class Professor
     {
