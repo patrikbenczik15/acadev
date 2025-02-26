@@ -4,14 +4,20 @@ namespace api.models
 {
     public class User
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string UserName { get; set; } = string.Empty;
         
+        [Required]
         [EmailAddress]
+        [MaxLength(200)]
         public string Email { get; set; } = string.Empty;
-
+        
+        [Required]
+        [MaxLength(256)] // Adjust the maximum length based on the hash algorithm
         public string PasswordHash { get; set; } = string.Empty;  // ! hashed password for user 
 
         [Required]
