@@ -1,4 +1,5 @@
 using api.Dto;
+using api.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

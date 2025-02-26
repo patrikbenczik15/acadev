@@ -1,4 +1,4 @@
-namespace api.dto
+namespace api.Dto
 {
     public class Review
     {
