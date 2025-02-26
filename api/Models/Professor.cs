@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace api.models
+namespace api.Models
 {
     public class Professor
     {

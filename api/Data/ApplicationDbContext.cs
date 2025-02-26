@@ -1,7 +1,7 @@
-﻿using api.models;
+﻿using api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace api.Dao
+namespace api.Dto
 {
     public class ApplicationDbContext : DbContext
     {
