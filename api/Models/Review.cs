@@ -19,14 +19,14 @@ namespace api.Models
         public int Rating { get; set; }
 
         [Required]
-        public int ProfessorId { get; set; }
+        public int? ProfessorId { get; set; }
 
-        public required Professor Professor { get; set; }  // ! Navigational property for professor
+        public required Professor? Professor { get; set; }  // ! Navigational property for professor
 
         [Required]
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
-        public required User User { get; set; }  //  ! Navigational property for user 
+        public required User? User { get; set; }  //  ! Navigational property for user 
 
         public DateTime DatePosted { get; set; } = DateTime.UtcNow;
 

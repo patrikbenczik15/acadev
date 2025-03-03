@@ -1,3 +1,5 @@
+using api.Dtos.User;
+
 namespace api.Dto
 {
     public class Review
@@ -16,7 +18,7 @@ namespace api.Dto
 
         public int UserId { get; set; }
 
-        public required User User { get; set; }  //  ! Navigational property for user 
+        public required UserDto User { get; set; }  //  ! Navigational property for user 
 
         public DateTime DatePosted { get; set; } = DateTime.UtcNow;
 
