@@ -7,6 +7,7 @@ namespace api.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+            System.Console.WriteLine("DbContext created");
         }
         
         public DbSet<Professor> Professors { get; set; }

@@ -12,7 +12,7 @@ namespace api.Dto
 
         public int ProfessorId { get; set; }
 
-        public required Professor Professor { get; set; }  // ! Navigational property for professor
+       // public required Professor Professor { get; set; }  // ! Navigational property for professor
 
         public int UserId { get; set; }
 

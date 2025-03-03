@@ -1,6 +1,6 @@
 namespace api.Dto
 {
-    public class Professor
+    public class ProfessorDto
     {
         public int Id { get; set; }
 
@@ -14,6 +14,6 @@ namespace api.Dto
 
 
         // ! review list for professor
-        // public ICollection<Review> Reviews { get; set; } = new List<Review>();
+         public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }
