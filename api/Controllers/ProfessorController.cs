@@ -43,14 +43,32 @@ namespace api.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] ProfessorDto professor)
         {
-            // TODO BUG -> daca dau uncomment trb puse id urile cu mana, daca las asa se poate da update
-            // TODO la entitati inexistente(adica echivalent cu POST)
-            // if (id != professor.Id)
-            //     return BadRequest();
-            _service.UpdateProfessor(professor);
-            return NoContent();
+            try
+            {
+                // Validăm dacă ID-ul din URL coincide cu ID-ul din DTO (dacă este furnizat)
+                if (professor.Id != 0 && professor.Id != id)
+                {
+                    return BadRequest("ID-ul din URL nu coincide cu ID-ul din corpul cererii");
+                }
+        
+                // Setăm ID-ul din URL pe obiectul DTO
+                professor.Id = id;
+        
+                // Încercăm să actualizăm profesorul
+                _service.UpdateProfessor(professor);
+        
+                return NoContent();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound($"Professor with ID {id} not found");
+            }
+            catch (Exception ex)
+            {
+                // Log-uiește excepția
+                return StatusCode(500, "A apărut o eroare internă. Vă rugăm să încercați din nou.");
+            }
         }
-
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

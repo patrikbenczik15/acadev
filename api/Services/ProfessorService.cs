@@ -29,9 +29,17 @@ namespace api.Services
             _repository.AddProfessor(ProfessorMappers.ToModel(professor));
         }
 
-        public void UpdateProfessor(ProfessorDto professor)
+        public void UpdateProfessor(ProfessorDto professorDto)
         {
-            _repository.UpdateProfessor(ProfessorMappers.ToModel(professor));
+            try
+            {
+                _repository.UpdateProfessor(ProfessorMappers.ToModel(professorDto));
+            }
+            catch (KeyNotFoundException ex)
+            {
+                // Poți gestiona excepția aici sau o poți propaga mai departe
+                throw;
+            }
         }
 
         public void DeleteProfessor(int id)

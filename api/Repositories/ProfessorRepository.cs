@@ -35,7 +35,30 @@ namespace api.Repositories
 
         public void UpdateProfessor(Professor professor)
         {
-            _context.Professors.Update(professor);
+            // Obține entitatea direct din baza de date, nu din cache-ul contextului
+            var existingProfessor = _context.Professors
+                .AsNoTracking()  // Important: Previne tracking-ul entității
+                .FirstOrDefault(p => p.Id == professor.Id);
+        
+            if (existingProfessor == null)
+            {
+                throw new KeyNotFoundException($"Professor with ID {professor.Id} not found");
+            }
+    
+            // Detașăm orice entitate existentă cu același ID care ar putea fi urmărită
+            var local = _context.Set<Professor>()
+                .Local
+                .FirstOrDefault(entry => entry.Id.Equals(professor.Id));
+    
+            if (local != null)
+            {
+                _context.Entry(local).State = EntityState.Detached;
+            }
+    
+            // Atașăm entitatea nouă și o marcăm ca modificată
+            _context.Entry(professor).State = EntityState.Modified;
+    
+            // Salvăm modificările
             _context.SaveChanges();
         }
 

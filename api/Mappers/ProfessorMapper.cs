@@ -34,7 +34,7 @@ namespace api.Mappers
         public static List<ProfessorDto> ToListDto(IEnumerable<Professor> professors)
         {
             if (professors == null)
-                return null;
+                return new List<ProfessorDto>();
             
             List<ProfessorDto> professorDtos = new List<ProfessorDto>();
             for (int i = 0; i < professors.Count(); i++)
